@@ -72,6 +72,13 @@ if ($method === 'GET')
 {
     $userid = getUserid();
 
+    if($userid == "")
+    {
+        http_response_code(400);
+        echo json_encode(['message' => 'Please pass a Parameter to get a person\'s details']);
+        return;
+    }
+
     $p = new Person();
 
     $person = $p->getPerson($userid);
